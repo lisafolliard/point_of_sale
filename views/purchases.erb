@@ -3,7 +3,7 @@
 <ul>
   <% @purchases.each do |purchase| %>
 
-  <li><%= Date.parse(purchase.purchase_date().to_s).strftime('%B %e, %Y') %></li>
+  <li><a href="/purchase/<%= purchase.id %>"><%=Date.parse(purchase.purchase_date().to_s).strftime('%B %d, %Y') %></a></li>
   <% end %>
 </ul>
 

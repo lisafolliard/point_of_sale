@@ -22,3 +22,10 @@ post('/purchases') do
   Purchase.create({:purchase_date => @purchase_date})
   redirect('/purchases')
 end
+
+get('/purchase/:id') do
+  @purchase = Purchase.find(params['id'].to_i)
+  @products = Product.all()
+  @products_purchased = @purchase.products
+  erb(:purchase)
+end
