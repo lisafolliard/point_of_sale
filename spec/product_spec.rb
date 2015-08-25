@@ -12,6 +12,11 @@ describe(Product) do
       product = Product.new({:description => ""})
       expect(product.save()).to(eq(false))
     end
+
+    it('validates the length of the description at most 50 characters') do
+      product = Product.new({:description => 'a'.*(51)})
+      expect(product.save()).to(eq(false))
+    end
   end
 
 
