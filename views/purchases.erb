@@ -1,0 +1,7 @@
+<h1>Purchases</h1>
+
+<ul>
+  <% @purchases.each do |purchase| %>
+  <li><%= purchase.purchase_date() %></li>
+  <% end %>
+</ul>
