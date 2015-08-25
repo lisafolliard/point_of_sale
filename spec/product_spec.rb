@@ -1,0 +1,11 @@
+require('spec_helper')
+
+describe(Product) do
+  describe('#purchase') do
+    it('determines what purchase belongs to each product') do
+      new_purchase = Purchase.create({:purchase_date => '2011-09-09 00:00:00'})
+      new_product = Product.create({:cost => 3, :description => 'shirt',:purchase_id => new_purchase.id})
+      expect(new_product.purchase()).to(eq(new_purchase))
+    end
+  end
+end
