@@ -11,4 +11,11 @@ describe('path to view individual purchase page', :type => :feature) do
     expect(page).to have_content("Purchases")
   end
 
+  it('adds and displays a new purchase') do
+    visit('/purchases')
+    fill_in('purchase_date', :with => '2012-12-30 00:00:00')
+    click_button('Add')
+    expect(page).to have_content('December 30, 2012')
+  end
+
 end

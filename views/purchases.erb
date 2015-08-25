@@ -2,6 +2,13 @@
 
 <ul>
   <% @purchases.each do |purchase| %>
-  <li><%= purchase.purchase_date() %></li>
+
+  <li><%= Date.parse(purchase.purchase_date().to_s).strftime('%B %e, %Y') %></li>
   <% end %>
 </ul>
+
+<form action="/purchases" method="post">
+  <label for='purchase_date'>Add Purchase</label>
+  <input type="text" name="purchase_date" placeholder='year/month/day'>
+  <button type="submit">Add</button>
+</form>

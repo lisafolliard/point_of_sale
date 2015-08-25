@@ -16,3 +16,9 @@ get('/purchases') do
   @purchases = Purchase.all()
   erb(:purchases)
 end
+
+post('/purchases') do
+  @purchase_date = params['purchase_date']
+  Purchase.create({:purchase_date => @purchase_date})
+  redirect('/purchases')
+end
