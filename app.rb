@@ -31,11 +31,12 @@ get('/purchase/:id') do
 end
 
 patch('/purchase/:id/update') do
-  @purchase = Purchase.find(params['id'].to_i)
-  @purchase_ids =params['purchase_ids']
-  @product = Product.find(params['product_id'])
-  @product.update({:purchase_id => @purchase_ids})
-  binding.pry
+  @purchase = Purchase.find(params['purchase_id'].to_i)
+  @product_ids =params['product_ids']
+  @product_ids.each do |product_id|
+    product=Product.find(product_id.to_i())
+    product.update(:purchase_id => @purchase.id)
+  end
   redirect('/purchase/' + @purchase.id().to_s())
 end
 

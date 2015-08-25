@@ -17,7 +17,10 @@ describe(Product) do
       product = Product.new({:description => 'a'.*(51)})
       expect(product.save()).to(eq(false))
     end
+
+    it('converts cost into string') do
+      product = Product.new({:cost => 4})
+      expect(product.cost()).to(eq("$4.00"))
+    end
   end
-
-
 end

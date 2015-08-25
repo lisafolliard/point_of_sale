@@ -10,25 +10,24 @@
 
 
 <h3>Products you can add</h3>
+
 <form  action="/purchase/<%=@purchase.id%>/update" method = 'post'>
   <input type="hidden" name="_method" value="patch">
 
-<ul>
-  <%@products.each() do |product| %>
-<div class = "checkbox">
+  <ul>
+    <%@products.each() do |product| %>
 
-  <li>
-    <input type="checkbox" name="purchase_ids[]" value="<%=@purchase.id%>">
-    <input type="hidden" name="product_id" value="<%=product.id%>">
-    <%= product.description() %> | <%= product.cost %>
-  </li>
-</div>
 
+      <li>
+        <input type="checkbox" name="product_ids[]" value="<%=product.id%>">
+        <input type="hidden" name="purchase_id" value="<%=@purchase.id%>">
+        <%= product.description() %> | <%= product.cost %>
+      </li>
+
+    <%end%>
+
+  </ul>
   <button name="submit">Add Product</button>
-
-  <%end%>
-
-</ul>
 </form>
 
 <a href="/purchases">Purchases</a>
