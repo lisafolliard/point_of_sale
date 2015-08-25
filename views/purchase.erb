@@ -1,1 +1,27 @@
 <h1>Purchase: <%= @purchase.id.to_s %></h1>
+
+<form  action="/purchase/<%=@purchase.id%>/update" >
+  <input type="hidden" name="_method" value="patch">
+
+<ul>
+  <%@products.each() do |product| %>
+<div class = "checkbox">
+
+  <li>
+    <input type="checkbox" name="purchase_ids[]" value="<%=product.id%>">
+
+    <%= product.description() %> | <%= product.cost %>
+  </li>
+</div>
+
+  <button name="submit">Add Product</button>
+
+  <%end%>
+
+</ul>
+
+</form>
+
+<a href="/purchases">Purchases</a>
+<br>
+<a href="/">Home</a>

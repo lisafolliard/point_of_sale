@@ -24,6 +24,14 @@ describe('path to view individual purchase page', :type => :feature) do
     click_button('Add')
     click_link('December 30, 2012')
     expect(page).to have_content('Purchase:')
-
   end
+end
+
+describe('path to view all products') do
+  it('path to view all products') do
+    visit('/')
+    click_link('See all Products')
+    expect(page).to have_content("Products")
+  end
+
 end

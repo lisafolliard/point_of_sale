@@ -1,0 +1,29 @@
+<h1>Products</h1>
+
+<table class="table">
+  <tr>
+    <th>Description</th>
+    <th>Cost</th>
+  </tr>
+
+  <% @products.each do |product| %>
+  <tr>
+  <td><%= product.description %></td>
+  <td> <%= product.cost %></td>
+
+</tr>
+  <% end %>
+
+</table>
+
+<form action="/products" method="post">
+  <label for='description'>Add description</label>
+  <input type="text" name="description" placeholder='eg: shoes'>
+
+  <label for='cost'>Add cost</label>
+  <input type="integer" name="cost" placeholder='eg: 2'>
+
+  <button type="submit">Add</button>
+</form>
+
+<a href="/">Home</a>

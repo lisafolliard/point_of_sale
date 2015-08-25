@@ -29,3 +29,31 @@ get('/purchase/:id') do
   @products_purchased = @purchase.products
   erb(:purchase)
 end
+
+patch('/purchase/:id/update') do
+  @purchase = Purchase.find(params['id'].to_i)
+  @product =Product.find(params['product_id'])
+  @product.update({:purchase_id => @purchase.id})
+  redirect('/purchase/' + @purchase.id().to_s())
+end
+
+
+
+
+
+
+
+
+
+
+get('/products') do
+  @products = Product.all()
+  erb(:products)
+end
+
+post('/products') do
+  description = params['description']
+  cost = params['cost']
+  Product.create({:description => description, :cost => cost, :purchase_id => nil})
+  redirect('/products')
+end
