@@ -32,8 +32,10 @@ end
 
 patch('/purchase/:id/update') do
   @purchase = Purchase.find(params['id'].to_i)
-  @product =Product.find(params['product_id'])
-  @product.update({:purchase_id => @purchase.id})
+  @purchase_ids =params['purchase_ids']
+  @product = Product.find(params['product_id'])
+  @product.update({:purchase_id => @purchase_ids})
+  binding.pry
   redirect('/purchase/' + @purchase.id().to_s())
 end
 

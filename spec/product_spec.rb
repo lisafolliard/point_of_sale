@@ -7,5 +7,12 @@ describe(Product) do
       new_product = Product.create({:cost => 3, :description => 'shirt',:purchase_id => new_purchase.id})
       expect(new_product.purchase()).to(eq(new_purchase))
     end
+
+    it('validates presence of description') do
+      product = Product.new({:description => ""})
+      expect(product.save()).to(eq(false))
+    end
   end
+
+
 end

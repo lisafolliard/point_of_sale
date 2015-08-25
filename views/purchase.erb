@@ -1,6 +1,16 @@
 <h1>Purchase: <%= @purchase.id.to_s %></h1>
 
-<form  action="/purchase/<%=@purchase.id%>/update" >
+<h3>Products Purchased</h3>
+<ul>
+  <%@products_purchased.each() do |product|%>
+  <li><%=product.description%></li>
+  <%end%>
+</ul>
+
+
+
+<h3>Products you can add</h3>
+<form  action="/purchase/<%=@purchase.id%>/update" method = 'post'>
   <input type="hidden" name="_method" value="patch">
 
 <ul>
@@ -8,8 +18,8 @@
 <div class = "checkbox">
 
   <li>
-    <input type="checkbox" name="purchase_ids[]" value="<%=product.id%>">
-
+    <input type="checkbox" name="purchase_ids[]" value="<%=@purchase.id%>">
+    <input type="hidden" name="product_id" value="<%=product.id%>">
     <%= product.description() %> | <%= product.cost %>
   </li>
 </div>
@@ -19,7 +29,6 @@
   <%end%>
 
 </ul>
-
 </form>
 
 <a href="/purchases">Purchases</a>
