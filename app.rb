@@ -31,7 +31,7 @@ get('/purchase/:id') do
 end
 
 patch('/purchase/:id/update') do
-  @purchase = Purchase.find(params['purchase_id'].to_i)
+  @purchase = Purchase.find(params['id'].to_i)
   @product_ids =params['product_ids']
   @product_ids.each do |product_id|
     product=Product.find(product_id.to_i())

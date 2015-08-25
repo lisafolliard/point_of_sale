@@ -20,8 +20,7 @@
 
       <li>
         <input type="checkbox" name="product_ids[]" value="<%=product.id%>">
-        <input type="hidden" name="purchase_id" value="<%=@purchase.id%>">
-        <%= product.description() %> | <%= product.cost %>
+        <%= product.description() %> | <%= product.cost %> | <%=product.purchase_id %>
       </li>
 
     <%end%>
