@@ -5,6 +5,7 @@ require 'rspec'
 require 'pg'
 require('./lib/product')
 require('./lib/purchase')
+require('pry')
 
 
 RSpec.configure do |config|

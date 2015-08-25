@@ -40,15 +40,6 @@ patch('/purchase/:id/update') do
   redirect('/purchase/' + @purchase.id().to_s())
 end
 
-
-
-
-
-
-
-
-
-
 get('/products') do
   @products = Product.all()
   erb(:products)
